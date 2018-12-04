@@ -1,0 +1,12 @@
+.registro{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+
+    max-width: 450px;
+}
+
+.error{
+    color: red;
+}
