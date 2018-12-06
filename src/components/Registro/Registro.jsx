@@ -47,7 +47,13 @@ class Registro extends Component{
     this.comprobarPaterno()
     this.comprobarMaterno()
     this.comprobarCorreo()
-    console.log(this.state)
+    
+    if(this.state.errorNombre === false && 
+      this.state.errorPaterno === false && 
+      this.state.errorMaterno === false &&
+      this.state.errorCorreo === false){
+        this.saveData()
+      }
   }
   comprobarNombre = () =>{
     var valorNombre = this.state.nombre;
@@ -119,6 +125,56 @@ class Registro extends Component{
       if(at === true){
         this.setState({errorCorreo: true})
       } else {this.setState({errorCorreo: false}) }
+  }
+
+  saveData = () =>{
+    var nombre, paterno, materno, nacimiento, correo, direccion, id, arrayEmployees;
+
+    if(localStorage.Employees == undefined){
+
+      localStorage.setItem("Employees", JSON.stringify([]));
+      arrayEmployees = JSON.parse(localStorage.getItem("Employees"));
+
+      nombre = this.state.nombre
+      paterno = this.state.paterno
+      materno = this.state.materno
+      nacimiento = this.state.nacimiento
+      correo = this.state.correo
+      direccion = this.state.direccion
+      id = Math.random().toString(36).substr(2, 16)
+
+      var objeto = {nombre:nombre, 
+        paterno: paterno, 
+        materno: materno, 
+        nacimiento: nacimiento, 
+        correo: correo, 
+        direccion: direccion,
+        id: id}
+  
+      arrayEmployees.push(objeto)
+      localStorage.setItem("Employees", JSON.stringify(arrayEmployees))
+    } else {
+      arrayEmployees = JSON.parse(localStorage.getItem("Employees"));
+
+      nombre = this.state.nombre
+      paterno = this.state.paterno
+      materno = this.state.materno
+      nacimiento = this.state.nacimiento
+      correo = this.state.correo
+      direccion = this.state.direccion
+      id = Math.random().toString(36).substr(2, 16)
+
+      var objeto = {nombre:nombre, 
+        paterno: paterno, 
+        materno: materno, 
+        nacimiento: nacimiento, 
+        correo: correo, 
+        direccion: direccion,
+        id: id}
+  
+        arrayEmployees.push(objeto)
+        localStorage.setItem("Employees", JSON.stringify(arrayEmployees))
+    }
   }
     render(){
       var mensajeNombre, mensajePaterno, mensajeMaterno, mensajeCorreo;

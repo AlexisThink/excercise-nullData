@@ -1,0 +1,38 @@
+.item{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-radius: 4px;
+
+    padding: 4px;
+    margin-bottom: 6px;
+
+    color: white;
+    background-image: linear-gradient(to bottom,#373B44, #4286f4)
+}
+
+.item__nombre{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.item__apellido{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.item__correo{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.item__button{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
